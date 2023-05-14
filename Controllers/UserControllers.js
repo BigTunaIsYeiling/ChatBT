@@ -21,6 +21,8 @@ module.exports = {
     res.cookie("Access-token", token, {
       httpOnly: true,
       expires: new Date(Date.now() + +1000 * 15),
+      sameSite: "none",
+      secure: process.env.NODE_ENV,
     });
     return res.json({ msg: " user Logged in successfully " });
   }),
@@ -41,6 +43,8 @@ module.exports = {
     res.cookie("Access-token", token, {
       httpOnly: true,
       expires: new Date(Date.now() + +1000 * 15),
+      sameSite: "none",
+      secure: process.env.NODE_ENV,
     });
     return res.json({ msg: "User Created" });
   }),
@@ -67,6 +71,8 @@ module.exports = {
     res.cookie("Access-token", newToken, {
       httpOnly: true,
       expires: new Date(Date.now() + 1000 * 60 * 15),
+      sameSite: "none",
+      secure: process.env.NODE_ENV,
     });
     req.user = user;
     next();

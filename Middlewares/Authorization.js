@@ -22,5 +22,4 @@ const verifyAccess = asyncHandler(async (req, res, next) => {
     });
   }
 });
-
 module.exports = verifyAccess;
