@@ -77,10 +77,13 @@ module.exports = {
     req.user = user;
     next();
   }),
-  //logout
-  Logout: asyncHandler(async (req, res) => {
+  LogOut: asyncHandler(async (req, res) => {
     res.clearCookie("Access-token");
-    return res.json({ msg: "User Logged out" }).redirect("/");
+    return res
+      .json({
+        msg: "Logged Out",
+      })
+      .redirect("/");
   }),
   UpdateUser: asyncHandler(async (req, res) => {
     const { userId } = req.user;
