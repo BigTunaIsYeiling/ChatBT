@@ -78,12 +78,14 @@ module.exports = {
     next();
   }),
   LogOut: asyncHandler(async (req, res) => {
-    res.clearCookie("Access-token");
-    return res
-      .json({
-        msg: "Logged Out",
-      })
-      .redirect("/");
+    res.cookie("Access-token", "", {
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 60 * 15),
+      sameSite: "none",
+      secure: process.env.NODE_ENV,
+    });
+    // Redirect the user to the home page.
+    return res.redirect("/");
   }),
   UpdateUser: asyncHandler(async (req, res) => {
     const { userId } = req.user;
