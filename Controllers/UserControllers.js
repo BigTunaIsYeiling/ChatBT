@@ -84,8 +84,7 @@ module.exports = {
       sameSite: "none",
       secure: process.env.NODE_ENV,
     });
-    // Redirect the user to the home page.
-    return res.redirect("/");
+    return res.json({ msg: "User Logged out successfully" });
   }),
   UpdateUser: asyncHandler(async (req, res) => {
     const { userId } = req.user;
